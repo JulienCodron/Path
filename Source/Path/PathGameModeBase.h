@@ -14,4 +14,6 @@ class PATH_API APathGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	APathGameModeBase();
 };

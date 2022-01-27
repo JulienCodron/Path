@@ -26,6 +26,7 @@ void Anpc::Tick(float DeltaTime)
 	FVector acceleration = steering_force / mass;
 	velocity = Truncate(velocity + acceleration, max_speed);
 	position = position + velocity;
+	orientation = velocity.Rotation();
 	SetActorLocation(FVector(position.X,position.Y,position.Z));
-	SetActorRotation(velocity.Rotation());
+	SetActorRotation(orientation);
 }
