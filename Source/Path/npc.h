@@ -3,25 +3,27 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "steer.h"
+#include "SteeringObject.h"
+#include "npc.generated.h"
 
-#include "Enemy.generated.h"
-
+/**
+ * 
+ */
 UCLASS()
-class PATH_API AEnemy : public AActor , public steer
+class PATH_API Anpc : public ASteeringObject
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this actor's properties
-	AEnemy();
+	Anpc();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };
