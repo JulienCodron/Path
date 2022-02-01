@@ -6,6 +6,17 @@
 #include "GameFramework/Actor.h"
 #include "SteeringObject.generated.h"
 
+
+UENUM()
+enum PathingStrategy {
+	SEEK UMETA(DisplayName = "Seek"),
+	FLEE UMETA(DisplayName = "Flee"),
+	PURSUE UMETA(DisplayName = "Pursue"),
+	EVADE UMETA(DisplayName = "Evade"),
+	CIRCUIT UMETA(DisplayName = "Circuit")
+};
+
+
 UCLASS()
 class PATH_API ASteeringObject : public AActor
 {
@@ -18,6 +29,8 @@ protected:
 	FVector position;
 	FVector velocity;
 	FRotator orientation;
+	int circuitIndex = 0;
+
 
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
 		float max_force = 1.f;
@@ -31,11 +44,20 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
 		float TurningParameter;
 
+	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
+		TEnumAsByte<PathingStrategy> Strategy;
+
+	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
+		TArray<AActor*> CurrentCircuit;
+
 public:
 	FVector Truncate(FVector v, const float& max);
 	FVector Seek();
 	FVector Flee();
 	FVector Pursue();
 	FVector Evade();
-
+	FVector Circuit();
 };
+
+
+
