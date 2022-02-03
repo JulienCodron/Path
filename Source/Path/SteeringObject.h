@@ -13,7 +13,8 @@ enum PathingStrategy {
 	FLEE UMETA(DisplayName = "Flee"),
 	PURSUE UMETA(DisplayName = "Pursue"),
 	EVADE UMETA(DisplayName = "Evade"),
-	CIRCUIT UMETA(DisplayName = "Circuit")
+	CIRCUIT UMETA(DisplayName = "Circuit"),
+	ONEWAY UMETA(DisplayName = "OneWay")
 };
 
 
@@ -30,7 +31,6 @@ protected:
 	FVector velocity;
 	FRotator orientation;
 	int circuitIndex = 0;
-
 
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
 		float max_force = 1.f;
@@ -57,6 +57,7 @@ public:
 	FVector Pursue();
 	FVector Evade();
 	FVector Circuit();
+	FVector OneWay();
 };
 
 

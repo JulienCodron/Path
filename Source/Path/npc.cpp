@@ -40,6 +40,8 @@ void Anpc::Tick(float DeltaTime)
 		case CIRCUIT:
 			current_strategy = Circuit();
 			break;
+		case ONEWAY:
+			current_strategy = OneWay();
 		default:
 			current_strategy = Seek();
 			break;
