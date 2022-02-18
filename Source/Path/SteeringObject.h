@@ -14,7 +14,8 @@ enum PathingStrategy {
 	PURSUE UMETA(DisplayName = "Pursue"),
 	EVADE UMETA(DisplayName = "Evade"),
 	CIRCUIT UMETA(DisplayName = "Circuit"),
-	ONEWAY UMETA(DisplayName = "OneWay")
+	ONEWAY UMETA(DisplayName = "OneWay"),
+	TWOWAY UMETA(DisplayName = "TwoWay")
 };
 
 
@@ -50,7 +51,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
 		TArray<AActor*> CurrentCircuit;
 
+	bool WayEnd = false;
+
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 public:
+	ASteeringObject();
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 	FVector Truncate(FVector v, const float& max);
 	FVector Seek();
 	FVector Flee();
@@ -58,6 +67,7 @@ public:
 	FVector Evade();
 	FVector Circuit();
 	FVector OneWay();
+	FVector TwoWay();
 };
 
 
