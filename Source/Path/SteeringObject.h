@@ -43,9 +43,6 @@ protected:
 		AActor *target;
 
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
-		float TurningParameter;
-
-	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
 		TEnumAsByte<PathingStrategy> Strategy;
 
 	UPROPERTY(EditAnywhere, Category = "SteeringParam", meta = (AllowPrivateAccess = "true"))
